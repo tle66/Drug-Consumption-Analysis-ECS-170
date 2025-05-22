@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='slider.css') }}">
+</head>
+<style>
+    button, input[type=submit] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+</style>
+<body style="background: url(https://thumbs.dreamstime.com/z/set-pills-medicine-drugs-painkiller-tablet-vitamine-pharmaceutical-antibiotics-healthcare-concept-vector-cartoon-design-191849038.jpg)">
+<div class="row">
+    <h1 style="text-align: center;"> Personality Model </h1>
+    <h2 style="text-align: center;">What personalities are susceptible to consuming which drugs?</h2>
+    <div class="column">
+        <form action="{{ url_for('predictPersonality')}}" method="post">
+        <h3>Neuroticism Score</h3>
+            <label for="NScoreSlider">Between 12 and 60</label>
+            <br/>
+            <br>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="NScoreSlider" name="nss" min="12" max="60" step="1" value="36"> <br />
+            </div>
+            <h3>Extraversion Score</h3>
+                <label for="EScoreSlider">Between 16 and 59</label>
+                <br/>
+                <br>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="EScoreSlider" name="ess" min="16" max="59" step="1"> <br />
+            </div>
+        <h3>Openness Score</h3>
+            <label for="OScoreSlider">Between 24 and 60</label>
+            <br/>
+            <br>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="OScoreSlider" name="oss" min="24" max="60" step="1"> <br />
+            </div>
+        <h3>Agreeableness Score</h3>
+            <label for="AScoreSlider">Between 12 and 60</label>
+            <br/>
+            <br>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="AScoreSlider" name="ass" min="12" max="60" step="1"> <br />
+            </div>
+        </div>
+        <div class="column">
+            <h3>Conscientiousness Score</h3>
+            <label for="CScoreSlider">Between 17 and 59</label>
+            <br/>
+            <br>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="CScoreSlider" name="css" min="17" max="59" step="1"> <br />
+            </div>
+            <h3>Impulsiveness Score</h3>
+                <label for="IScoreSlider">Between 1 and 10</label>
+                <br/>
+                <br>
+                <div class="slidecontainer">
+                    <input type="range" class="slider" id="IScoreSlider" name="iss" min="1" max="10" step="1"> <br />
+                </div>
+
+            <h3>Impulsive Sensation Seeking Score </h3>
+                <label for="SSScoreSlider">Between 1 and 11</label>
+                <br/>
+                <br>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="SSScoreSlider" name="sss" min="1" max="11" step="1"> <br />
+            </div>
+        <br>
+        <input type="submit" name="submit" value="Make Prediction" />
+            <a href="/"><button type="button">Go to Home Page</button></a>
+
+    <br>
+    <br>
+            {{ alcPredText }} <br>
+            {{ ampPredText }} <br>
+            {{ canPredText }} <br>
+            {{ cokPredText }} <br>
+            {{ ecsPredText }} <br>
+            {{ lsdPredText }} <br>
+            {{ metPredText }} <br>
+            {{ musPredText }} <br>
+    </div>
+</div>
+
+</body>
+
+</html>

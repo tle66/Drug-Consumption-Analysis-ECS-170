@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gateway Drug Model</title>
+  </head>
+  <style>
+    button, input[type=submit] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+</style>
+<body style="background: url(https://thumbs.dreamstime.com/z/set-pills-medicine-drugs-painkiller-tablet-vitamine-pharmaceutical-antibiotics-healthcare-concept-vector-cartoon-design-191849038.jpg)">
+
+  <div class="main">
+     <h1 style="text-align: center;"> Gateway Drug Model </h1>
+    <h2 style="text-align: center;">If an individual consumes alcohol/cannabis, are they likely to consume other drugs?</h2>
+    <form  action="{{ url_for('predictGateway')}}"method="post">
+      <h3>Last Alcohol Consumption</h3>
+      <input type="radio" name="alcohol" value="2"/>Consumed within the last year.<br />
+      <input type="radio" name="alcohol" value="1"/>Consumed within the last decade or
+      over a decade ago.<br />
+      <input type="radio" name="alcohol" value="0"/>Never have consumed.<br />
+      <h3>Last Cannabis Consumption</h3>
+      <input type="radio" name="cannabis" value="2"/>Consumed within the last year.<br />
+      <input type="radio" name="cannabis" value="1" />Consumed within the last decade or
+      over a decade ago.<br />
+      <input type="radio" name="cannabis" value="0" />Never have consumed.<br />
+      <br>
+      <input type="submit" name="submit" value="Make Prediction" />
+      <a href="/"><button type="button">Go to Home Page</button></a>
+    </form>
+
+    <br>
+    <br>
+    {{ prediction_text }}
+  </div>
+  </body>
+</html>

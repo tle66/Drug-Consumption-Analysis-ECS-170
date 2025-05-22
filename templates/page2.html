@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demographic Model</title>
+</head>
+<style>
+        .column {
+        float: left;
+        width: 20%;
+        }
+    
+        .row:after {
+        content: "";
+        display: table;
+        clear: both;
+        }
+
+    button, input[type=submit] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+</style>
+<body style="background: url(https://thumbs.dreamstime.com/z/set-pills-medicine-drugs-painkiller-tablet-vitamine-pharmaceutical-antibiotics-healthcare-concept-vector-cartoon-design-191849038.jpg)">
+
+<div class="row">
+    <h1 style="text-align: center;"> Demographics Model </h1>
+    <p style="text-align: center;">What demographics are most susceptible to particular drug consumption?</p>
+    <form action="{{ url_for('predictDemographic')}}" method="post">
+        <div class="column" style="background-color:#FFB695;">
+            <h3>Age</h3>
+            <input type="radio" name="age" value="-0.95197"/>18-24 Years old.<br />
+            <input type="radio" name="age" value="-0.07854"/>25-34 Years old.<br />
+            <input type="radio" name="age" value="0.49788"/>35-44 Years old.<br />
+            <input type="radio" name="age" value="1.09449"/>45-54 Years old.<br />
+            <input type="radio" name="age" value="1.82213"/>55-64 Years old.<br />
+            <input type="radio" name="age" value="2.59171"/>65+ Years old.<br />
+
+            <h3>Gender</h3>
+            <input type="radio" name="gender" value="0.48246"/>Female.<br />
+            <input type="radio" name="gender" value="-0.48246"/>Male.<br />
+
+            <h3>Education</h3>
+            <input type="radio" name="education" value="-2.43591"/>Left school before 16 years old.<br />
+            <input type="radio" name="education" value="-1.73790"/>Left school at 16 years old.<br />
+            <input type="radio" name="education" value="-1.43719"/>Left school at 17 years old.<br />
+            <input type="radio" name="education" value="-1.22751"/>Left school at 18 years old.<br />
+            <input type="radio" name="education" value="-0.61113"/>Some college or university, no certificate or degree.<br />
+            <input type="radio" name="education" value="-0.05921"/>Professional certificate/ diploma.<br />
+            <input type="radio" name="education" value="0.45468"/>University degree.<br />
+            <input type="radio" name="education" value="1.16365"/>Masters degree.<br />
+            <input type="radio" name="education" value="1.98437"/>Doctorate degree.<br />
+
+            <h3>Country</h3>
+            <input type="radio" name="country" value="-0.09765"/>Australia.<br />
+            <input type="radio" name="country" value="0.24923"/>Canada.<br />
+            <input type="radio" name="country" value="-0.46841"/>New Zealand.<br />
+            <input type="radio" name="country" value="-0.28519 "/>Other.<br />
+            <input type="radio" name="country" value="0.21128"/>Republic of Ireland.<br />
+            <input type="radio" name="country" value="0.96082"/>UK.<br />
+            <input type="radio" name="country" value="-0.57009"/>USA.<br />
+
+        </div>
+        <div class="column" style="background-color: aqua;">
+            <h3>Ethnicity</h3>
+            <input type="radio" name="ethnicity" value="-0.50212"/>Asian.<br />
+            <input type="radio" name="ethnicity" value="-1.10702"/>Black.<br />
+            <input type="radio" name="ethnicity" value="1.90725"/>Mixed-Black/Asian.<br />
+            <input type="radio" name="ethnicity" value="0.12600"/>Mixed-White/Asian.<br />
+            <input type="radio" name="ethnicity" value="-0.22166"/>Mixed-White/Black.<br />
+            <input type="radio" name="ethnicity" value="0.11440"/>Other.<br />
+            <input type="radio" name="ethnicity" value="-0.31685"/>White.<br />
+
+            <h3>Personality Scores</h3>
+            <label for="NScoreSlider">Neuroticism Score (between 12 and 60)</label>
+            <input type="range" id="NScoreSlider" name="nss" min="12" max="60" step="1"> <br />
+
+            <label for="EScoreSlider">Extraversion Score (between 16 and 59)</label>
+            <input type="range" id="EScoreSlider" name="ess" min="16" max="59" step="1"> <br />
+
+            <label for="OScoreSlider">Openness to experience Score (between 24 and 60)</label>
+            <input type="range" id="OScoreSlider" name="oss" min="24" max="60" step="1"> <br />
+
+            <label for="AScoreSlider">Agreeableness Score (between 12 and 60)</label>
+            <input type="range" id="AScoreSlider" name="ass" min="12" max="60" step="1"> <br />
+
+            <label for="CScoreSlider">Conscientiousness Score (between 17 and 59)</label>
+            <input type="range" id="CScoreSlider" name="css" min="17" max="59" step="1"> <br />
+
+            <label for="IScoreSlider">Impulsiveness Score (between 1 and 10)</label>
+            <input type="range" id="IScoreSlider" name="iss" min="1" max="10" step="1"> <br />
+
+            <label for="SSScoreSlider">Impulsive Sensation Seeking Score (between 1 and 11)</label>
+            <input type="range" id="SSScoreSlider" name="sss" min="1" max="11" step="1"> <br />
+
+            <input type="submit" name="submit" value="Make Prediction" />
+            <a href="/"><button type="button">Go to Home Page</button></a>
+        </div>
+    </form>
+
+    <br>
+    <br>
+    {{ alcPredText }} <br>
+    {{ ampPredText }} <br>
+    {{ canPredText }} <br>
+    {{ cokPredText }} <br>
+    {{ ecsPredText }} <br>
+    {{ lsdPredText }} <br>
+    {{ metPredText }} <br>
+    {{ musPredText }} <br>
+
+</div>
+</body>
+</html>
